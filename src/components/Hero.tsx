@@ -11,41 +11,56 @@ import { useAppContent } from '../context/AppContext';
 export default function Hero() {
   const { settings } = useAppContent();
 
-  const titleWords = settings.heroTitle.split(' ');
-  const lastWord = titleWords.pop();
-  const restOfTitle = titleWords.join(' ');
+  const words = settings.heroTitle.split(' ');
+  const lastWord = words.pop();
+  const mainTitle = words.join(' ');
 
   return (
-    <section className="relative pt-40 pb-20 px-6 max-w-7xl mx-auto text-center">
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-100 rounded text-[10px] font-bold text-[#004A99] mb-8 uppercase tracking-[0.2em]">
-          Ambiente Oficial {settings.portalName} {settings.portalSubtitle}
-        </div>
-        
-        <h1 className="text-4xl md:text-6xl font-display font-bold tracking-tight mb-6 text-slate-900 leading-tight">
-          {restOfTitle} <br />
-          <span className="text-[#004A99]">{lastWord}</span>
-        </h1>
-        
-        <p className="max-w-2xl mx-auto text-slate-500 text-base md:text-lg mb-10 leading-relaxed">
-          {settings.heroDescription}
-        </p>
-        
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#apps" className="w-full sm:w-auto px-8 py-3.5 bg-[#004A99] text-white font-bold rounded-lg hover:bg-[#003366] transition-all flex items-center justify-center gap-2">
-            Ver Todas as Aplicações
-            <ArrowRight className="w-4 h-4" />
-          </a>
+    <section className="relative overflow-hidden pt-32 pb-16">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-4xl"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-100/50 rounded-full text-[10px] font-bold text-blue-700 mb-8 uppercase tracking-widest">
+            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse" />
+            Portal Institucional • {settings.portalSubtitle}
+          </div>
           
-          <button className="w-full sm:w-auto px-8 py-3.5 bg-white border border-slate-200 text-slate-600 font-bold rounded-lg hover:bg-slate-50 transition-all">
-            Suporte ao Usuário
-          </button>
+          <h1 className="text-4xl md:text-6xl font-display font-medium tracking-tight mb-8 text-slate-900 leading-[1.1]">
+            {mainTitle} <span className="text-blue-700 block md:inline font-bold">{lastWord}</span>
+          </h1>
+          
+          <p className="text-slate-500 text-lg md:text-xl mb-12 leading-relaxed max-w-2xl font-light">
+            {settings.heroDescription}
+          </p>
+          
+          <div className="flex flex-wrap items-center gap-4">
+            <a 
+              href="#apps" 
+              className="px-8 py-4 bg-blue-700 text-white font-bold rounded-xl hover:bg-blue-800 transition-all flex items-center gap-2 shadow-lg shadow-blue-900/10 active:scale-95"
+            >
+              Acessar Catálogo
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            
+            <button className="px-8 py-4 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-all text-sm">
+              Suporte Técnico
+            </button>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Decorative element - subtle grid pattern */}
+      <div className="absolute top-0 right-0 w-1/3 h-full pointer-events-none opacity-[0.03] overflow-hidden hidden lg:block">
+        <div className="grid grid-cols-10 h-full w-full">
+          {Array.from({ length: 100 }).map((_, i) => (
+            <div key={i} className="border-r border-b border-slate-900 aspect-square" />
+          ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

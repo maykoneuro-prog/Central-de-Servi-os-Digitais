@@ -24,7 +24,7 @@ export default function AppViewer() {
           <h2 className="text-xl font-bold text-slate-900 mb-2">Aplicação não encontrada</h2>
           <button 
             onClick={() => navigate('/')}
-            className="text-[#004A99] font-bold hover:underline"
+            className="text-blue-700 font-bold hover:underline"
           >
             Voltar ao Portal
           </button>
@@ -40,19 +40,19 @@ export default function AppViewer() {
         <div className="flex items-center gap-4">
           <button 
             onClick={() => navigate('/')}
-            className="flex items-center gap-2 text-slate-600 hover:text-[#004A99] transition-colors group"
+            className="flex items-center gap-2 text-slate-600 hover:text-blue-700 transition-colors group"
           >
             <div className="p-1.5 rounded-lg group-hover:bg-blue-50 transition-colors">
               <ChevronLeft className="w-5 h-5" />
             </div>
-            <span className="text-sm font-bold hidden md:inline">Portal SESI</span>
+            <span className="text-sm font-bold hidden md:inline">Voltar ao Portal</span>
           </button>
           
           <div className="h-6 w-px bg-slate-200 mx-1" />
           
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded bg-blue-50 flex items-center justify-center">
-               <span className="text-[#004A99] text-xs font-black">{app.name.charAt(0)}</span>
+               <span className="text-blue-700 text-xs font-black">{app.name.charAt(0)}</span>
             </div>
             <div>
               <h1 className="text-sm font-bold text-slate-900 leading-none mb-0.5">{app.name}</h1>
@@ -73,10 +73,10 @@ export default function AppViewer() {
             href={app.url} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 bg-[#004A99] text-white text-xs font-bold rounded-lg hover:bg-[#003366] transition-all"
+            className="flex items-center gap-2 px-4 py-2 bg-blue-700 text-white text-xs font-bold rounded-lg hover:bg-blue-800 transition-all shadow-md shadow-blue-900/10"
           >
             <ExternalLink className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Abrir em Nova Aba</span>
+            <span className="hidden sm:inline">Nova Aba</span>
           </a>
         </div>
       </header>
@@ -86,7 +86,7 @@ export default function AppViewer() {
         {loading && (
           <div className="absolute inset-0 flex items-center justify-center bg-slate-50 z-10">
             <div className="flex flex-col items-center gap-4">
-              <div className="w-10 h-10 border-4 border-blue-100 border-t-[#004A99] rounded-full animate-spin" />
+              <div className="w-10 h-10 border-4 border-blue-100 border-t-blue-700 rounded-full animate-spin" />
               <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Carregando Sistema...</p>
             </div>
           </div>
@@ -95,11 +95,11 @@ export default function AppViewer() {
         {app.url === '#' || app.url === '' ? (
           <div className="absolute inset-0 flex items-center justify-center p-12 text-center">
             <div className="max-w-md">
-              <div className="w-16 h-16 bg-blue-50 text-[#004A99] rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-blue-50 text-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <RefreshCw className="w-8 h-8 opacity-20" />
               </div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-2">Ambiente de Demonstração</h2>
-              <p className="text-slate-500 text-sm">Esta aplicação está em fase de homologação. A URL real será configurada pela TI SESI quando o ambiente de produção estiver disponível.</p>
+              <h2 className="text-2xl font-bold text-slate-900 mb-2">Ambiente de Homologação</h2>
+              <p className="text-slate-500 text-sm">Esta aplicação está em fase de configuração. A URL de produção será vinculada automaticamente após a liberação da TI.</p>
             </div>
           </div>
         ) : (

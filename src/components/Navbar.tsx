@@ -15,46 +15,48 @@ export default function Navbar() {
     <motion.nav 
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-white/90 backdrop-blur-md border-b border-slate-200"
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-4 bg-white/80 backdrop-blur-xl border-b border-slate-200/50"
     >
       <Link to="/" className="flex items-center gap-4">
         <div className="flex flex-col">
-          <span className="font-display text-xl font-bold tracking-tight text-[#004A99]">{settings.portalName}</span>
-          <span className="text-[10px] font-bold text-slate-400 -mt-1 leading-none uppercase tracking-[0.15em]">{settings.portalSubtitle}</span>
+          <span className="font-display text-lg font-bold tracking-tight text-blue-900 leading-none mb-1">
+            {settings.portalName}
+          </span>
+          <span className="text-[9px] font-black text-blue-700/60 uppercase tracking-[0.2em] leading-none">
+            {settings.portalSubtitle}
+          </span>
         </div>
-        <div className="h-8 w-px bg-slate-200" />
-        <span className="hidden sm:block text-slate-500 font-medium text-sm">Central de Serviços Digitais</span>
+        <div className="h-6 w-px bg-slate-200 shrink-0 mx-1" />
+        <span className="hidden sm:block text-slate-400 font-medium text-xs">Serviços Digitais</span>
       </Link>
       
-      <div className="hidden lg:flex items-center gap-8 text-xs font-bold text-slate-500 uppercase tracking-widest">
-        <Link to="/" className="hover:text-[#004A99] transition-colors">Início</Link>
-        <a href="#apps" className="hover:text-[#004A99] transition-colors">Aplicações</a>
-        <a href="#" className="hover:text-[#004A99] transition-colors">Governança</a>
-        {isAuthenticated ? (
-           <Link to="/admin" className="hover:text-[#004A99] transition-colors flex items-center gap-1.5 ring-1 ring-blue-100 bg-blue-50/50 px-2.5 py-1.5 rounded-lg">
-           <LayoutDashboard className="w-3.5 h-3.5" />
-           Painel Admin
-         </Link>
-        ) : (
-          <Link to="/login" className="hover:text-[#004A99] transition-colors flex items-center gap-1.5 ring-1 ring-slate-100 px-2.5 py-1.5 rounded-lg">
-            <LayoutDashboard className="w-3.5 h-3.5" />
-            Acesso Restrito
-          </Link>
-        )}
+      <div className="hidden lg:flex items-center gap-8 text-[11px] font-bold text-slate-500 uppercase tracking-widest">
+        <Link to="/" className="hover:text-blue-700 transition-colors">Catálogo</Link>
+        <Link to="/admin" className="hover:text-blue-700 transition-colors">Administração</Link>
+        <a href="https://sesipe.org.br" target="_blank" rel="noreferrer" className="hover:text-blue-700 transition-colors">Institucional</a>
       </div>
 
       <div className="flex items-center gap-3">
         {isAuthenticated ? (
-          <button 
-            onClick={() => logout()}
-            className="px-5 py-2.5 bg-slate-100 text-slate-600 text-xs font-bold rounded-lg hover:bg-slate-200 transition-all border border-slate-200"
-          >
-            Sair do Sistema
-          </button>
+          <div className="flex items-center gap-3">
+            <div className="hidden md:flex flex-col items-end mr-2">
+              <span className="text-[10px] font-bold text-slate-900">Admin Portal</span>
+              <span className="text-[9px] text-slate-400">Authenticated</span>
+            </div>
+            <button 
+              onClick={() => logout()}
+              className="px-4 py-2 bg-slate-100 text-slate-600 text-[10px] font-bold rounded-lg hover:bg-slate-200 transition-all border border-slate-200"
+            >
+              Logar Out
+            </button>
+          </div>
         ) : (
-          <button className="px-5 py-2.5 bg-[#004A99] text-white text-xs font-bold rounded-lg hover:bg-[#003366] transition-all shadow-sm">
-            Acesso Unificado (SSO)
-          </button>
+          <Link 
+            to="/login"
+            className="px-5 py-2.5 bg-blue-700 text-white text-[10px] font-bold rounded-lg hover:bg-blue-800 transition-all shadow-sm shadow-blue-900/10 active:scale-95"
+          >
+            Acesso Corporativo
+          </Link>
         )}
       </div>
     </motion.nav>
